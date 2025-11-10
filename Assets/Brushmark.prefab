@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9015265448970962709}
   - component: {fileID: 2796330469125259618}
   m_Layer: 0
-  m_Name: Paint Sample
+  m_Name: Brushmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

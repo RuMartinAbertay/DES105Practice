@@ -1,12 +1,20 @@
 using UnityEngine;
 
-public class DrawScript : MonoBehaviour
+public class ScriptPaintbrush : MonoBehaviour
 {
     public Camera mainCamera;
     public GameObject brush;
 
     LineRenderer currentLineRenderer;
     Vector2 lastPos;
+
+    public float distanceFromChainEnd;
+    public GameObject hook;
+
+    private void Start()
+    {
+        hook.GetComponent<HingeJoint2D>().connectedBody = GetComponent<Rigidbody2D>();
+    }
 
     private void Update()
     {
@@ -21,11 +29,10 @@ public class DrawScript : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            if (mousePos != lastPos)
+            if ((Vector2)transform.position != lastPos)
             {
-                AddPoint(mousePos);
-                lastPos = mousePos;
+                AddPoint(transform.position);
+                lastPos = transform.position;
             }
         }
         else
@@ -38,9 +45,8 @@ public class DrawScript : MonoBehaviour
     {
         GameObject brushInstance = Instantiate(brush);
         currentLineRenderer = brushInstance.GetComponent<LineRenderer>();
-        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        currentLineRenderer.SetPosition(0, mousePos);
-        currentLineRenderer.SetPosition(1, mousePos);
+        currentLineRenderer.SetPosition(0, transform.position);
+        currentLineRenderer.SetPosition(1, transform.position);
     }
 
     void AddPoint(Vector2 pointPos)
@@ -48,5 +54,14 @@ public class DrawScript : MonoBehaviour
         currentLineRenderer.positionCount++;
         int positionIndex = currentLineRenderer.positionCount - 1;
         currentLineRenderer.SetPosition(positionIndex, pointPos);
+    }
+
+    public void ConnectRopeEnd(Rigidbody2D endRB)
+    {
+        HingeJoint2D joint = gameObject.AddComponent<HingeJoint2D>();
+        joint.autoConfigureConnectedAnchor = false;
+        joint.connectedBody = endRB;
+        joint.anchor = Vector2.zero;
+        joint.connectedAnchor = new Vector2(0, distanceFromChainEnd);
     }
 }
