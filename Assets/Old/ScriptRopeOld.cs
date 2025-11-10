@@ -1,11 +1,10 @@
 using UnityEngine;
 
-public class ScriptRope : MonoBehaviour
+public class ScriptRopeOld : MonoBehaviour
 {
     public Rigidbody2D hook;
     public GameObject linkPrefab;
     public int links;
-    public ScriptRopeEnd scriptRopeEnd;
 
     void Start()
     {
@@ -27,9 +26,9 @@ public class ScriptRope : MonoBehaviour
             }
             else
             {
-                link.GetComponent<Renderer>().enabled = false;
-                scriptRopeEnd.ConnectRopeEnd(link.GetComponent<Rigidbody2D>());
+                //scriptPaintbrush.ConnectRopeEnd(link.GetComponent<Rigidbody2D>());
             }
+
         }
     }
 }
