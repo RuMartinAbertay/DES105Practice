@@ -30,6 +30,10 @@ public class ScriptRope : MonoBehaviour
             GameObject link = Instantiate(linkPrefab, transform);
             // Finds the link's HingeJoint 2D and connects it to the previous link
             HingeJoint2D joint = link.GetComponent<HingeJoint2D>();
+            if (i == 0)
+            {
+                joint.connectedAnchor = new Vector2(0, -2);
+            }
             joint.connectedBody = prevRB;
 
             // If the current link is not the last:

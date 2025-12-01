@@ -743,7 +743,7 @@ MonoBehaviour:
   hook: {fileID: 110935678}
   linkPrefab: {fileID: 1751063438230230069, guid: 27ad6a4c2ed511f42a2d9dc37d104ce3, type: 3}
   brush: {fileID: 1679356984}
-  links: 4
+  links: 5
   scriptRopeEnd: {fileID: 1679356993}
 --- !u!1 &832575517
 GameObject:
@@ -809,6 +809,7 @@ GameObject:
   - component: {fileID: 1679356991}
   - component: {fileID: 1679356992}
   - component: {fileID: 1679356993}
+  - component: {fileID: 1679356994}
   m_Layer: 0
   m_Name: Paintbrush
   m_TagString: Untagged
@@ -898,10 +899,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 7324db50ec68705408c718c6927f1ac9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -988,6 +989,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceFromLastRope: 0
+--- !u!114 &1679356994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1679356984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da2181e70e224c3e8e5762bf3ee17ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handle: {fileID: 1700450089}
+  maxLength: 2
 --- !u!1 &1700450089
 GameObject:
   m_ObjectHideFlags: 0
